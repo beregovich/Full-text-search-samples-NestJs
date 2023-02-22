@@ -8,7 +8,7 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
   //Максимальная разность min_gram и max_gram
   max_ngram_diff: 30,
   analysis: {
-    //Фильтр
+    //Фильтр — фильтрует поток после токенайзера по заданным правилам
     filter: {
       autocomplete_filter: {
         type: 'edge_ngram',
@@ -34,7 +34,6 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
       autocomplete_search_analyzer: {
         type: 'custom',
         tokenizer: 'autocomplete',
-        //tokenizer: 'keyword',
         filter: ['lowercase'],
       },
     },
@@ -79,7 +78,6 @@ export const samplePostMapping: MappingTypeMapping = {
       type: 'text',
       //Используется при поиске
       search_analyzer: 'full_text_search_analyzer',
-      //search_analyzer: 'ngram_analyzer',
       //Используется при индексации
       analyzer: 'ngram_analyzer',
       fields: {
@@ -92,3 +90,4 @@ export const samplePostMapping: MappingTypeMapping = {
     },
   },
 };
+//dd
