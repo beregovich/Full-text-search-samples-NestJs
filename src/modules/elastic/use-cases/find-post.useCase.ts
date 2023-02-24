@@ -4,7 +4,7 @@ import {
   QueryDslQueryContainer,
   SearchRequest,
 } from '@elastic/elasticsearch/lib/api/types';
-import { SearchQueryDto } from '../dto/search-query.dto';
+import { SearchQueryDto } from '../../../dto/search-query.dto';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
