@@ -12,7 +12,7 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
     filter: {
       autocomplete_filter: {
         type: 'edge_ngram',
-        min_gram: 1,
+        min_gram: 3,
         max_gram: 20,
       },
     },
@@ -26,21 +26,21 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
         tokenizer: 'ngram_tokenizer',
         filter: ['lowercase'],
       },
-      autocomplete_analyzer: {
-        type: 'custom',
-        tokenizer: 'standard',
-        filter: ['lowercase', 'autocomplete_filter'],
-      },
       autocomplete_search_analyzer: {
         type: 'custom',
-        tokenizer: 'autocomplete',
+        tokenizer: 'ngram',
+        filter: ['lowercase', 'autocomplete_filter'],
+      },
+      autocomplete_analyzer: {
+        type: 'custom',
+        tokenizer: 'autocomplete_tokenizer',
         filter: ['lowercase'],
       },
     },
     //Токенизаторы - описывают как будет разбиваться поток символов для ключи.
     tokenizer: {
       //Стандартный токенайзер разбивает текст на слова по Unicode Text Segmentation algorithm.
-      standard: {
+      standard_tokenizer: {
         type: 'standard',
         max_token_length: 15,
       },
@@ -56,7 +56,7 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
       //edge_ngram токенайзер разбивает текст на слова
       //Затем создает N-граммы с привязкой к началу слова.
       //Рекомендуется для автозавершения
-      autocomplete: {
+      autocomplete_tokenizer: {
         type: 'edge_ngram',
         min_gram: 1,
         max_gram: 30,
@@ -79,15 +79,14 @@ export const samplePostMapping: MappingTypeMapping = {
       //Используется при поиске
       search_analyzer: 'full_text_search_analyzer',
       //Используется при индексации
-      analyzer: 'ngram_analyzer',
+      analyzer: 'full_text_search_analyzer',
       fields: {
-        complete: {
+        autocomplete: {
           type: 'text',
           analyzer: 'autocomplete_analyzer',
-          search_analyzer: 'standard',
+          search_analyzer: 'autocomplete_search_analyzer',
         },
       },
     },
   },
 };
-//dd
