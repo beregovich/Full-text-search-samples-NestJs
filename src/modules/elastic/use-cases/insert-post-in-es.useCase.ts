@@ -1,5 +1,5 @@
 import { ElasticsearchService } from '@nestjs/elasticsearch';
-import { Post } from '../dto/create-post.dto';
+import { CreatePostDto } from '../../../dto/create-post.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -10,7 +10,7 @@ export class InsertPostInEsUseCase {
     private readonly elasticService: ElasticsearchService,
     private readonly configService: ConfigService,
   ) {}
-  async execute(post: Post) {
+  async execute(post: CreatePostDto) {
     const index = this.configService.get('INDEX');
     console.log(index);
     return this.elasticService.create({
