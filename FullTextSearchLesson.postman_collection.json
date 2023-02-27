@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "0fda6203-4d7b-4e85-a235-872569af7f03",
+		"name": "FullTextSearchLesson",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19638109"
+	},
+	"item": [
+		{
+			"name": "GET ALL INDICES JSON",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/_cat/indices?format=JSON",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "JSON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL INDEXES TABLE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/_cat/indices?format=table",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "table"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND ALL DOCS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/sample_index/_search?pretty=true&q=*:*",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sample_index",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "*:*"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search q",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/sample_index/_search?pretty=true&q=nestJS elasticsearch",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sample_index",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "nestJS elasticsearch"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET tokens",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fields\" : [\"problemDescription\"],\r\n  \"offsets\" : true,\r\n  \"payloads\" : true,\r\n  \"positions\" : true,\r\n  \"term_statistics\" : true,\r\n  \"field_statistics\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9200/sample_index/_termvectors/cbc27a3a-ff7f-4c79-b5e7-bafe78c47a62?fields=content",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sample_index",
+						"_termvectors",
+						"cbc27a3a-ff7f-4c79-b5e7-bafe78c47a62"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "content"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post in ES",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/elastic/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"elastic",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post in Mongo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/mongo/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"mongo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post in postgres",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"postgres test NestJS sample bla bla bka Elasticsearch bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/postgres/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"postgres",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND BY TERM IN ES",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/elastic/?term=NestJS",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"elastic",
+						""
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "NestJS"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND BY TERM IN POSTGRES",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/postgres/?term=NestJS Elasticsearch sample",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"postgres",
+						""
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "NestJS Elasticsearch sample"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND BY TERM IN MONGO",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/mongo/?term=NestJs bla",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"mongo",
+						""
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "NestJs bla"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET AUTOCOMPLETE",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/elastic/autocomplete/?term=Elasticsearch",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"elastic",
+						"autocomplete",
+						""
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "Elasticsearch"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE INDEX",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/sample_index",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"sample_index"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class SamplePostEntity {
@@ -6,6 +6,8 @@ export class SamplePostEntity {
   id: number;
   @Column()
   date: Date;
+  @Index({ fulltext: true })
   @Column()
   content: string;
 }
+//бла

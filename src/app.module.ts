@@ -6,11 +6,11 @@ import { PostgresModule } from './modules/postgres/postgres.module';
 
 @Module({
   imports: [
-    ElasticModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env'],
     }),
+    ElasticModule,
     MongoModule,
     PostgresModule,
   ],

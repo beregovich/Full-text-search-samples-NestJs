@@ -4,6 +4,7 @@ import { FindPostInPostgresUseCase } from './use-cases/find-post-in-postgres.use
 import { PostgresController } from './api/postgres.controller';
 import { InsertPostInPostgresUseCase } from './use-cases/insert-post-in-postgres.useCase';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { SamplePostEntity } from './infrastructure/sample-post.entity';
 
 @Module({
   imports: [
@@ -16,11 +17,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DATABASE'),
         autoLoadEntities: true,
-        synchronize: false,
+        synchronize: true,
         ssl: { rejectUnauthorized: false },
       }),
       inject: [ConfigService],
     }),
+    TypeOrmModule.forFeature([SamplePostEntity]),
   ],
 
   providers: [FindPostInPostgresUseCase, InsertPostInPostgresUseCase],
