@@ -45,7 +45,7 @@ export class FindPostUseCase {
       query: clientQuery.searchNameTerm,
       //Нечеткий поиск
       fuzziness: 'auto',
-      analyzer: 'full_text_search_analyzer',
+      analyzer: 'ngram_analyzer',
       //коэффициент "нечеткости"
       boost: 1.5,
     };

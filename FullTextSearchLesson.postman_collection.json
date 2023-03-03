@@ -177,7 +177,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch\"\r\n}",
+					"raw": "{\r\n  \"content\": \"JavaScript\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -200,6 +200,37 @@
 		},
 		{
 			"name": "create post in Mongo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"NestJS Elasticsearch bla bla\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/mongo/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"mongo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create index",
 			"request": {
 				"auth": {
 					"type": "noauth"

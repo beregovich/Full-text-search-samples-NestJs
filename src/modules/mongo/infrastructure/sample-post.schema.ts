@@ -7,6 +7,8 @@ export class SamplePost {
   date: Date;
   @Prop({ required: true })
   content: string;
+  @Prop({ required: true })
+  title: string;
 }
 export const SamplePostSchema = SchemaFactory.createForClass(SamplePost).index(
   {
@@ -15,6 +17,7 @@ export const SamplePostSchema = SchemaFactory.createForClass(SamplePost).index(
   {
     weights: {
       content: 7,
+      title: 15,
     },
   },
 );

@@ -33,7 +33,8 @@ import { GetAutocompleteUseCase } from './use-cases/get-autocomplete.useCase';
 export class ElasticModule implements OnModuleInit {
   constructor(private readonly createIndexUseCase: CreateIndexUseCase) {}
   async onModuleInit() {
-    return null;
-    //await this.createIndexUseCase.execute();
+    // const result = await this.createIndexUseCase.execute();
+    // console.log(result);
+    return;
   }
 }

@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Put, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Query } from '@nestjs/common';
 import { FindPostUseCase } from '../use-cases/find-post.useCase';
 import { CreatePostDto } from '../../../dto/create-post.dto';
 import { InsertPostInEsUseCase } from '../use-cases/insert-post-in-es.useCase';
 import { GetAutocompleteUseCase } from '../use-cases/get-autocomplete.useCase';
+import { CreateIndexUseCase } from '../use-cases/create-index.useCase';
 
 @Controller('elastic')
 export class ElasticController {
@@ -10,6 +11,7 @@ export class ElasticController {
     private readonly findPostUseCase: FindPostUseCase,
     private readonly getAutocompleteUseCase: GetAutocompleteUseCase,
     private readonly insertPostInEsUseCase: InsertPostInEsUseCase,
+    private readonly createIndexUseCase: CreateIndexUseCase,
   ) {}
   @Get()
   async findPosts(@Query('term') term: string) {
@@ -22,5 +24,10 @@ export class ElasticController {
   @Put()
   async createPost(@Body() post: CreatePostDto) {
     return await this.insertPostInEsUseCase.execute(post);
+  }
+  @Post()
+  async createIndex() {
+    return await this.createIndexUseCase.execute();
+    //
   }
 }

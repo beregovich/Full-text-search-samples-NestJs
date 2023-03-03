@@ -10,4 +10,3 @@ export class SamplePostEntity {
   @Column()
   content: string;
 }
-//бла

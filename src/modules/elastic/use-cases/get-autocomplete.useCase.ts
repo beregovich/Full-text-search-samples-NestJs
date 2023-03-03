@@ -28,10 +28,10 @@ export class GetAutocompleteUseCase {
   private async getAutocomplete(term: string) {
     const matchQuery: QueryDslMatchQuery = {
       query: term,
-      analyzer: 'autocomplete_search_analyzer',
+      analyzer: 'autocomplete_analyzer',
     };
     const searchSourceQuery: QueryDslQueryContainer = {
-      match: { 'content.complete': matchQuery },
+      match: { 'content.autocomplete': matchQuery },
     };
     const searchRequest: SearchRequest = {
       query: searchSourceQuery,
