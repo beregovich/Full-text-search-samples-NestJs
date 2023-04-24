@@ -12,7 +12,7 @@ export const indicesCreateSettingsRequest: IndicesIndexSettings = {
     filter: {
       autocomplete_filter: {
         type: 'edge_ngram',
-        min_gram: 3,
+        min_gram: 3, //ff
         max_gram: 20,
       },
     },
@@ -83,8 +83,8 @@ export const samplePostMapping: MappingTypeMapping = {
       fields: {
         autocomplete: {
           type: 'text',
-          analyzer: 'ngram_analyzer',
-          search_analyzer: 'ngram_analyzer',
+          analyzer: 'autocomplete_analyzer',
+          search_analyzer: 'autocomplete_analyzer',
         },
       },
     },

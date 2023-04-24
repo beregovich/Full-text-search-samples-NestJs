@@ -10,8 +10,14 @@ export class FindPostInMongoUseCase {
     private readonly postModel: Model<PostDocument>,
   ) {}
   public async execute(searchText: string) {
-    return this.postModel.find({
-      $text: { $search: searchText },
-    });
+    return this.postModel.aggregate([
+      {
+        $match: { $text: { $search: searchText } },
+      },
+    ]);
+    // find({
+    //
+    //   $text: { $search: searchText },
+    // });
   }
 }
